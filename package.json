@@ -1,0 +1,19 @@
+{
+  "name": "semantic-embeddings-service",
+  "version": "1.0.0",
+  "description": "Servicio de embeddings y búsqueda semántica con TypeScript y Qdrant",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}
