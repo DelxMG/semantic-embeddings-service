@@ -1,28 +1,18 @@
 import { EmbeddingService } from "./embeddings/EmbeddingService";
-import { FakeEmbeddingStrategy } from "./embeddings/providers/FakeEmbeddingStrategy";
+import { OpenAIEmbeddingStrategy } from "./embeddings/providers/OpenAIEmbeddingStrategy";
 
 async function bootstrap(): Promise<void> {
-  const strategy = new FakeEmbeddingStrategy();
+  const strategy = new OpenAIEmbeddingStrategy();
   const embeddingService = new EmbeddingService(strategy);
 
   const text = "¿Qué es un embedding?";
-  const singleEmbedding = await embeddingService.generateEmbedding(text);
+  const embedding = await embeddingService.generateEmbedding(text);
 
   console.log("Strategy:", embeddingService.getStrategyName());
   console.log("Dimension:", embeddingService.getDimension());
   console.log("Text:", text);
-  console.log("Embedding:", singleEmbedding);
-
-  const texts = [
-    "Hola mundo",
-    "Qdrant almacena vectores",
-    "TypeScript me ayuda a aprender arquitectura"
-  ];
-
-  const batchEmbeddings = await embeddingService.generateEmbeddings(texts);
-
-  console.log("Batch texts:", texts);
-  console.log("Batch embeddings:", batchEmbeddings);
+  console.log("Embedding length:", embedding.length);
+  console.log("Embedding preview:", embedding.slice(0, 10));
 }
 
 bootstrap().catch((error) => {
