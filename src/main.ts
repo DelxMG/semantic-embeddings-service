@@ -1,8 +1,8 @@
 import { EmbeddingService } from "./embeddings/EmbeddingService";
-import { LocalTransformerEmbeddingStrategy } from "./embeddings/providers/LocalTransformerEmbeddingStrategy";
+import { EmbeddingStrategyFactory } from "./embeddings/EmbeddingStrategyFactory";
 
 async function bootstrap(): Promise<void> {
-  const strategy = new LocalTransformerEmbeddingStrategy();
+  const strategy = EmbeddingStrategyFactory.create();
   const embeddingService = new EmbeddingService(strategy);
 
   const text = "¿Qué es un embedding?";
