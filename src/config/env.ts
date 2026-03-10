@@ -25,8 +25,9 @@ function getOptionalNumber(value: string | undefined, defaultValue: number): num
 }
 
 export const env = {
-  openAiApiKey: getEnvVariable("OPENAI_API_KEY"),
-  openAiEmbeddingModel: getEnvVariable("OPENAI_EMBEDDING_MODEL"),
+  embeddingProvider: getEnvVariable("EMBEDDING_PROVIDER"),
+  openAiApiKey: process.env.OPENAI_API_KEY ?? "",
+  openAiEmbeddingModel: process.env.OPENAI_EMBEDDING_MODEL ?? "text-embedding-3-small",
   openAiEmbeddingDimensions: getOptionalNumber(
     process.env.OPENAI_EMBEDDING_DIMENSIONS,
     1536
